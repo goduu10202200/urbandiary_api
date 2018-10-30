@@ -1,8 +1,8 @@
 var mysql = require("mysql");
 var http = require("http"); // 1 - 載入 Node.js 原生模組 http
 var server = http.createServer(function(req, res) {
-  //   // 2 - 建立server
-  //   // 在此處理 客戶端向 http server 發送過來的 req。
+  // 2 - 建立server
+  // 在此處理 客戶端向 http server 發送過來的 req。
 
   if (req.url == "/jieba") {
     res.writeHead(200, { "Content-Type": "text/html" });
@@ -29,7 +29,10 @@ var server = http.createServer(function(req, res) {
 
     var content, split_content;
     var topN = 4;
-    var utc = new Date()
+    //設定今天日期
+    var date = new Date();
+    date.setTime(date.getTime() + 8 * 60 * 60 * 1000);
+    var utc = date
       .toJSON()
       .slice(0, 10)
       .replace(/-/g, "-");
@@ -41,10 +44,7 @@ var server = http.createServer(function(req, res) {
         var sql =
           "SELECT id,content FROM diary WHERE  date='" +
           utc +
-          "'AND jieba_check!=" +
-          1 +
-          "";
-
+          "'AND jieba_check!=1 ";
         connection.query(sql, function(err, result) {
           if (err) {
             console.log("[SELECT ERROR] - ", err.message);

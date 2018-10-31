@@ -30,12 +30,16 @@ var server = http.createServer(function(req, res) {
     var content, split_content;
     var topN = 4;
     //設定今天日期
-    var date = new Date();
-    date.setTime(date.getTime() + 8 * 60 * 60 * 1000);
-    var utc = date
-      .toJSON()
-      .slice(0, 10)
-      .replace(/-/g, "-");
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
+    var utc = year + "-" + month + "-" + date;
+    // var date = new Date();
+    // date.setTime(date.getTime() + 8 * 60 * 60 * 1000);
+    // var utc = date
+    //   .toJSON()
+    //   .slice(0, 10)
+    //   .replace(/-/g, "-");
 
     pool.getConnection(function(err, connection) {
       if (err) {

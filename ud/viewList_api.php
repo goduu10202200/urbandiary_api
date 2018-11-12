@@ -13,9 +13,9 @@
                 "date"         =>$row_chat['date'],
                 "time"	       =>$row_chat['time'],
                 "location"   =>$row_chat['location'],
-                "content"     =>$row_chat['title'],
-                "status"        => $row_chat['status'] ,
-                "kind"        => $row_chat['kind'] ,
+                "title"          =>$row_chat['title'],
+                "status"       => $row_chat['status'] ,
+                "kind"         => $row_chat['kind'] ,
             );
         }
     } else {
@@ -24,4 +24,3 @@
 
     echo json_encode($response_data);
     $conn->close();
-

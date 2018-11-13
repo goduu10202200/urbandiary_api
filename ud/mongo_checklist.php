@@ -2,7 +2,10 @@
  include 'DBConnection_mongo.php';
  $raw_post_data = json_decode(file_get_contents('php://input'), true);
 
+ // 資料表
  $collection = 'scheduled';
+
+ // 設定變數
  $username =  $raw_post_data['username'];
  $status = $raw_post_data['status'];
  $title = $raw_post_data['title'];

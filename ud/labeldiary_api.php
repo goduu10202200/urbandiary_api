@@ -9,11 +9,7 @@
     $sql = "SELECT * FROM scheduled WHERE type = '".$type."' ";
     $result = $conn->query($sql);
     $row = $result->fetch_array();
-    // if ($result->num_rows >0) {
-       
-    // } else {
-    //     echo "No Results Found.";
-    // }
+
     $data = $row['title'];
     if ($data != "") {
         echo("在".$row['location']."，".$row['title']);
@@ -22,4 +18,3 @@
     }
    
     $conn->close();
-    //{"id":"1","date":"2018-10-24","time":"14:00","location":"操場","content":"跑步", "status":"0"}

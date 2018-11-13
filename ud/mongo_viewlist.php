@@ -2,9 +2,12 @@
  include 'DBConnection_mongo.php';
  $raw_post_data = json_decode(file_get_contents('php://input'), true);
 
+  // 資料表
  $collection = 'scheduled';
+
+ // 設定變數
  $today =  $raw_post_data['today'];
-// $today =  '2018-11-12';
+// $today =  '2018-11-13';
  
 
 // 連線資料庫
@@ -18,7 +21,6 @@ $options = [
 // 查詢資料
 $query = new MongoDB\Driver\Query($filter, $options);
 $cursor = $manager->executeQuery($dbname.'.'.$collection, $query);
-$cc = $cursor;
 // 判斷是否有資料
 
 foreach ($cursor as $key =>  $document) {

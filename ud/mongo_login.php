@@ -2,7 +2,10 @@
  include 'DBConnection_mongo.php';
  $raw_post_data = json_decode(file_get_contents('php://input'), true);
 
+ // 資料表
  $collection = 'member';
+ 
+ // 設定變數
  $username = $raw_post_data['account'];
  $password =  $raw_post_data['password'];
  

@@ -13,6 +13,8 @@
  $date =  $raw_post_data['date'];
  $time =  $raw_post_data['time'];
  $location = $raw_post_data['location'];
+ $latitude = $raw_post_data['latitude'];
+ $longitude = $raw_post_data['longitude'];
  
 
 // 連線資料庫
@@ -28,6 +30,8 @@ $bulk->insert([
     'content'          => '',
     'type'               => $type,
     'location'         => $location,
+    'latitude'         => $latitude,
+    'longitude'         => $longitude,
     'date'               => $date,
     'time'               => $time,
     'status'             => 0,

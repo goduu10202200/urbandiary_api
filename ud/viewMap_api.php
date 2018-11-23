@@ -13,9 +13,9 @@
             //     'longitude'   =>$row_chat['longitude'],
             // );
             $response_data[] = array(
-                "key"            =>$row_chat['id'],
+                "id"            =>$row_chat['id'],
                 "title"            =>$row_chat['title'],
-                // "date"         =>$row_chat['date'],
+                "date"         =>$row_chat['date'],
                 // "time"	       =>$row_chat['time'],
                 // "coordinates"   =>$coordinates,
                 'coordinates' => array(

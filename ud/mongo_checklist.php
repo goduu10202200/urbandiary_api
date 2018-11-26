@@ -6,9 +6,10 @@
  $collection = 'scheduled';
 
  // 設定變數
- $username =  $raw_post_data['username'];
+ $created_at =  $raw_post_data['created_at'];
+//  $username =  $raw_post_data['username'];
  $status = $raw_post_data['status'];
- $title = $raw_post_data['title'];
+//  $title = $raw_post_data['title'];
 
 // 連線資料庫
 $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
@@ -18,7 +19,7 @@ $bulk = new MongoDB\Driver\BulkWrite;
 
 //更新資料
 $bulk->update(
-    ['username' => $username,'title' => $title],
+    ['created_at' => $created_at],
     ['$set' => ['status' => $status]]
 );
 

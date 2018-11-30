@@ -30,7 +30,7 @@ $manager->executeBulkWrite($dbname.'.'.$collection, $bulk);
 // if ($conn->query($sql) === true) {
 //     echo "New record created successfully";
     // header('Location: http://192.168.1.108:5000/jieba');
-    header('Location: http://172.20.10.3:5000/jieba');
+    header('Location: http://192.168.1.104:5000/jieba');
     exit;
 // } else {
 //     echo "Error: " . $sql . "<br>" . $conn->error;

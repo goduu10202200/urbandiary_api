@@ -33,11 +33,13 @@ foreach ($cursor as $key =>  $document) {
     );
 }
 
-$mood_1 = array("好累喔！", "有點煩。");
+$mood_1 = array("好累喔！", "好厭煩。");
 $mood_2 = array("有點累。");
 $mood_3 = array("感覺還行。", "覺得還可以。");
-$mood_4 = array("感覺不錯！", "還蠻喜歡的(๑´ڡ`๑)");
-$mood_5 = array("超開心的啦～", "讚喔XD", "水喔");
+$mood_4 = array("感覺不錯！");
+$mood_5 = array("心情愉悅(๑´ڡ`๑)");
+$mood_6 = array("開心開心～", "讚喔XD");
+$mood_7 = array("超開心的啦～", "超讚ohya！", "水喔～");
 
 
 
@@ -59,6 +61,12 @@ if (count($response_data) > 1) {
         break;
         case 5:
             $mood = $mood_5[rand(0,count($mood_5)-1)];
+        break;
+        case 6:
+            $mood = $mood_6[rand(0,count($mood_6)-1)];
+        break;
+        case 7:
+            $mood = $mood_7[rand(0,count($mood_7)-1)];
         break;
         default:
             $mood = "";

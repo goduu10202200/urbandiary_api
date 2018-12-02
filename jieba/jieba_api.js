@@ -1,5 +1,7 @@
 // 載入 Node.js 原生模組 http
 var http = require("http");
+// 載入 axios
+let axios = require("axios");
 
 //  建立server
 // 在此處理 客戶端向 http server 發送過來的 req。
@@ -22,15 +24,17 @@ var server = http.createServer(function(req, res) {
 
     //設定今天日期
     var date = new Date().getDate();
+    var dd = (date > 9 ? "" : "0") + date;
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
-    var utc = year + "-" + month + "-" + date;
+    var utc = year + "-" + month + "-" + dd;
 
     var topN = 4;
     var content, split_content;
 
     var newJieba = [];
     var con_Jieba = "";
+    var array_Jieba = [];
     var count_word = 0;
     var split_content = "";
     var ObjectID = require("mongodb").ObjectID;
@@ -52,6 +56,7 @@ var server = http.createServer(function(req, res) {
           .toArray(function(err, result) {
             // 返回集合中所有数据
             if (err) throw err;
+
             for (var t = 0; t < result.length; t++) {
               content = result[t].content;
 
@@ -70,11 +75,15 @@ var server = http.createServer(function(req, res) {
                     newJieba[j] = nodejieba.extract(split_content[i], topN)[j][
                       "word"
                     ];
+                    array_Jieba.push(newJieba[j]);
                     con_Jieba += newJieba[j] + ",";
                   }
 
                   //清除最後一個 ' , '
                   con_Jieba = con_Jieba.substring(0, con_Jieba.length - 1);
+
+                  // 傳送關鍵字API
+                  sendword(array_Jieba);
 
                   // 設定新增資料
                   var myobj = [
@@ -88,7 +97,7 @@ var server = http.createServer(function(req, res) {
                   //新增資料;
                   dbo.collection("jieba").insertMany(myobj, function(err, res) {
                     if (err) throw err;
-                    // console.log("插入的數量 : " + res.insertedCount);
+                    //console.log("插入的數量 : " + res.insertedCount);
                     db.close();
                   });
                   con_Jieba = "";
@@ -116,3 +125,17 @@ var server = http.createServer(function(req, res) {
 server.listen(5000); //3 - 進入此網站的監聽 port, 就是 localhost:xxxx 的 xxxx
 
 console.log("Node.js web server at port 5000 is running..");
+
+// 傳送關鍵字
+function sendword(word) {
+  axios
+    .post("http://localhost:6000/similarword", {
+      word: JSON.stringify(word)
+    })
+    .then(function(response) {
+      console.log(response.data);
+    })
+    .catch(function(e) {
+      console.log(e);
+    });
+}

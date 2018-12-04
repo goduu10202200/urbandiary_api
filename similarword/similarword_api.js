@@ -9,7 +9,7 @@ var url = "mongodb://localhost:27017/";
 const { Translate } = require("@google-cloud/translate");
 
 // Your Google Cloud Platform project ID
-const projectId = "udtest-1536892463367";
+const projectId = "urbandiary-224515";
 
 // Instantiates a client
 const translate = new Translate({

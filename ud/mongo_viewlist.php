@@ -20,10 +20,10 @@ $options = [
 // 查詢資料
 $query = new MongoDB\Driver\Query($filter, $options);
 $cursor = $manager->executeQuery($dbname.'.'.$collection, $query);
+
+
 // 判斷是否有資料
-
 $i = 0;
-
 foreach ($cursor as $key =>  $document) {
     $decode_data = json_decode(json_encode($document), true);
     $response_data[] = array(

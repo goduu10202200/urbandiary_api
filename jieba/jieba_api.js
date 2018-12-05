@@ -82,9 +82,6 @@ var server = http.createServer(function(req, res) {
                   //清除最後一個 ' , '
                   con_Jieba = con_Jieba.substring(0, con_Jieba.length - 1);
 
-                  // 傳送關鍵字API
-                  sendword(array_Jieba);
-
                   // 設定新增資料
                   var myobj = [
                     {
@@ -115,6 +112,8 @@ var server = http.createServer(function(req, res) {
                   });
               }
             }
+            // 傳送關鍵字API
+            sendword(array_Jieba);
             db.close();
           });
       }

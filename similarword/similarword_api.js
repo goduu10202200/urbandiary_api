@@ -33,6 +33,7 @@ var server = http.createServer(function(req, res) {
     req.on("end", function() {
       jsonparse_jsonstring = JSON.parse(jsonString);
       translate_word_array(JSON.parse(jsonparse_jsonstring["word"]));
+      console.log(jsonparse_jsonstring);
     });
   }
 });

@@ -13,9 +13,6 @@ $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
 
 // 查詢條件
 $filter = ['created_at' =>  $today];          // 欄位名及匹配條件
-$options = [
-    'sort'       => ['kind'=>-1],
-];
 
 // 查詢資料
 $query = new MongoDB\Driver\Query($filter);
@@ -32,9 +29,8 @@ foreach ($cursor as $key =>  $document) {
 }
 
 
-    echo json_encode($response_data);
-// if( $i > 0 ){
-// }
-// else{
-//     echo "No data";
-// }
+if ($i > 0) {
+    echo json_encode($response_data[0]);
+} else {
+    echo "No data";
+}

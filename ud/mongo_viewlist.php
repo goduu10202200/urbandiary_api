@@ -27,15 +27,14 @@ $i = 0;
 foreach ($cursor as $key =>  $document) {
     $decode_data = json_decode(json_encode($document), true);
     $response_data[] = array(
-        "id"              =>   $decode_data['_id'],
-        // "username"  =>   $decode_data['username'],
+        "id"             =>   $decode_data['_id'],
         "date"           =>   $decode_data['date'],
         "time"	         =>   $decode_data['time'],
-        "location"     =>   $decode_data['location'],
-        "title"            =>   $decode_data['title'],
+        "location"       =>   $decode_data['location'],
+        "title"          =>   $decode_data['title'],
         "status"         =>   $decode_data['status'] ,
         "kind"           =>   $decode_data['kind'] ,
-        "created_at"           =>   $decode_data['created_at'] ,
+        "created_at"     =>   $decode_data['created_at'] ,
     );
     $i += ($key+1);
 }

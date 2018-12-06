@@ -16,6 +16,7 @@ class Handler(BaseHTTPRequestHandler):
         data = json.loads(self.data_string)
         
         # 設定Text Array
+        #array_text = ['然後','我們','分手','合照','然後','他們','時候','曖昧','對話','女生']
         array_text = data['word']
         array_analysis_text = []
 

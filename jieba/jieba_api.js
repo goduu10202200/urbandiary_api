@@ -113,7 +113,7 @@ var server = http.createServer(function(req, res) {
               }
             }
             // 傳送關鍵字API
-            sendword(array_Jieba);
+            //sendword(array_Jieba);
             db.close();
           });
       }

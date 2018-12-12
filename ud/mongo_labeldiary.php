@@ -72,12 +72,15 @@ if (count($response_data) > 1) {
             $mood = "";
 
     }
-    if($decode_data['location'] === "地點"){
-        echo($decode_data['title']."，".$mood);
-    }
-    else{
-        echo("在".$decode_data['location']."，".$decode_data['title']."，".$mood);
-    }
+        if($decode_data['location'] === "地點"){
+            echo($decode_data['title']."，".$mood);
+        }
+        else if($mood === ""){
+            echo("在".$decode_data['location']."，".$decode_data['title']."。");
+        }
+        else{
+            echo("在".$decode_data['location']."，".$decode_data['title']."，".$mood);
+        }
     } else {
     echo "";
 }

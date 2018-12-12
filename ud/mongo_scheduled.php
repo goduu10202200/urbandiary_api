@@ -36,7 +36,8 @@ $bulk->insert([
     'time'               => $time,
     'status'             => 0,
     'kind'               => $kind,
-    'created_at'     =>  $today
+    'created_at'     =>  $today,
+    'mood'           => 0    
 ]);
 
 // 執行BulkWrite

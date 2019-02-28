@@ -13,7 +13,7 @@
 $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
 
 // 查詢條件
-$filter = [];          // 欄位名及匹配條件
+$filter = ['kind' =>  'list'];          // 欄位名及匹配條件
 $options = [
     'sort'       => ['time'=>1],
 ];

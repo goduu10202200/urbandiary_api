@@ -13,7 +13,7 @@
 $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
 
 // 查詢條件
-$filter = ['kind' =>  'list'];          // 欄位名及匹配條件
+$filter = [];          // 欄位名及匹配條件
 $options = [
     'sort'       => ['time'=>1],
 ];
@@ -32,6 +32,7 @@ foreach ($cursor as $key =>  $document) {
         "time"	         =>   $decode_data['time'],
         "location"       =>   $decode_data['location'],
         "status"         =>   $decode_data['status'] ,
+        "kind"         =>   $decode_data['kind'] ,
         "created_at"     =>   $decode_data['created_at'] 
         // $decode_data['date'] => array(
         //     "title"          =>   $decode_data['title'],

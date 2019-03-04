@@ -12,7 +12,7 @@ $today = date("Y-m-d");
 $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
 
 // 查詢條件
-$filter = ['created_at' =>  $today];          // 欄位名及匹配條件
+$filter = ['created_at' =>  $today];          // 欄位名及匹配條件zz
 
 // 查詢資料
 $query = new MongoDB\Driver\Query($filter);
@@ -30,7 +30,7 @@ foreach ($cursor as $key =>  $document) {
 
 
 if ($i > 0) {
-    echo json_encode($response_data[0]);
+    echo json_encode($response_data[$key]);
 } else {
     echo "No data";
 }

@@ -6,7 +6,7 @@
  $collection = 'scheduled';
 
  // 設定變數
-//  $today =  $raw_post_data['today'];
+ $today =  $raw_post_data['today'];
  
 
 // 連線資料庫
@@ -26,6 +26,7 @@ $cursor = $manager->executeQuery($dbname.'.'.$collection, $query);
 $i = 0;
 foreach ($cursor as $key =>  $document) {
     $decode_data = json_decode(json_encode($document), true);
+    if($decode_data['kind'] === "list" || $decode_data['kind'] === "future" && $decode_data['date'] === $today){
     $response_data[] = array(
         "date"    =>   $decode_data['date'],
         "title"   =>   $decode_data['title'],
@@ -40,6 +41,7 @@ foreach ($cursor as $key =>  $document) {
         // ),
     );
     $i += ($key+1);
+    }
 }
 
 

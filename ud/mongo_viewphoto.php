@@ -12,7 +12,7 @@ $today = date("Y-m-d");
 $manager = new MongoDB\Driver\Manager("mongodb://".$dbhost);
 
 // 查詢條件
-$filter = ['created_at' =>  $today];          // 欄位名及匹配條件zz
+$filter = ['created_at' =>  $today];          // 欄位名及匹配條件
 
 // 查詢資料
 $query = new MongoDB\Driver\Query($filter);

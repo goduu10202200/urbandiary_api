@@ -25,7 +25,7 @@ var server = http.createServer(function(req, res) {
     //設定今天日期
     var date = new Date().getDate();
     var dd = (date > 9 ? "" : "0") + date;
-    var month = new Date().getMonth() + 1;
+    var month = (new Date().getMonth()+1<10 ? '0' : '')+(new Date().getMonth()+1);
     var year = new Date().getFullYear();
     var utc = year + "-" + month + "-" + dd;
 
@@ -39,10 +39,10 @@ var server = http.createServer(function(req, res) {
     var split_content = "";
     var ObjectID = require("mongodb").ObjectID;
     var MongoClient = require("mongodb").MongoClient;
-    var url = "mongodb://localhost:27017/";
+    var url = "mongodb://localhost:27017/ud";
 
     MongoClient.connect(
-      url,
+      url,{ useNewUrlParser: true },
       function(err, db) {
         if (err) throw err;
         var dbo = db.db("ud");
